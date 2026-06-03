@@ -7,7 +7,7 @@
     height="180"
   />
   <img
-    src="https://github.com/ros-industrial/res_mapf/blob/main/res_mapf/docs/assets/demo.gif?raw=true"
+    src="https://github.com/ros-industrial/res_mapf/blob/main/docs/assets/demo.gif?raw=true"
     alt="rmf2-mapf-pybullet-demo"
     height="180"
   />
