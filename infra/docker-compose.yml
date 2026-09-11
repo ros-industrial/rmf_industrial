@@ -1,0 +1,48 @@
+name: rmf2-infra
+
+services:
+  mqtt-broker:
+    image: eclipse-mosquitto:2
+    volumes:
+      - ./mqtt/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+    ports:
+      - "${MQTT_PORT:-1883}:${MQTT_PORT:-1883}"
+    networks:
+     - rmf2-net
+    healthcheck:
+      test: ["CMD-SHELL", "mosquitto_pub -p ${MQTT_PORT:-1883} -t healthcheck -m ping || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+  amqp-broker:
+    image: rabbitmq:3-management
+    ports:
+      - "${AMQP_PORT:-5672}:${AMQP_PORT:-5672}"
+      - "${AMQP_MGMT_PORT:-15672}:${AMQP_MGMT_PORT:-15672}"
+    networks:
+      - rmf2-net
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  traefik:
+    image: traefik:v3
+    command:
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--providers.docker.network=rmf2-net"
+      - "--entrypoints.web.address=:${PROXY_PORT:-8080}"
+    ports:
+      - "${PROXY_PORT:-8080}:${PROXY_PORT:-8080}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - rmf2-net
+
+networks:
+  rmf2-net:
+    driver: bridge

@@ -1,0 +1,174 @@
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "1"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "2"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "3"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "4"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "5"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "6"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "7"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "8"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "9"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "10"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "11"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "12"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "13"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "14"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "15"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "16"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "17"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "18"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "19"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "20"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "21"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "22"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "23"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "24"
+
+[agvs.init_config]
+map_id = "warehouse"
+
+[[agvs]]
+manufacturer = "Manufacturer"
+serial_number = "25"
+
+[agvs.init_config]
+map_id = "warehouse"

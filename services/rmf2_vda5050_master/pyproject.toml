@@ -1,0 +1,37 @@
+[project]
+name = "rmf2-vda5050-master"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Chen Bainian", email = "chenbn@a-star.edu.sg" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "eclipse-zenoh>=1.0.0",
+    "fastapi>=0.141.1",
+    "pika>=1.4.4",
+    "pydantic-settings[toml]>=2.15.0",
+    "python-multipart>=0.0.20",
+    "sqlalchemy>=2.0.52",
+    "uvicorn>=0.52.4",
+    "networkx>=3.0",
+    "vda5050-core>=0.1.0rc1",
+]
+
+[project.scripts]
+rmf2_vda5050_master = "rmf2_vda5050_master.cli:main"
+
+[tool.uv_build]
+include = ["src/rmf2_vda5050_master/schemas/*.json"]
+
+[build-system]
+requires = ["uv_build>=0.11.7,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.1.1",
+    "pytest-mock>=3.15.1",
+]

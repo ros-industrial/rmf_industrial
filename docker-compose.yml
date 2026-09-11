@@ -1,0 +1,57 @@
+include:
+  - ./infra/docker-compose.yml
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-rmf2}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-rmf2}
+    volumes:
+      - ./infra/postgres/init-databases.sh:/docker-entrypoint-initdb.d/init-databases.sh:ro
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - rmf2-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-rmf2}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  rmf2-vda5050-master:
+    image: ${RMF2_VM_IMAGE:-ghcr.io/ros-industrial/rmf_industrial/rmf2-vda5050-master:latest}
+    depends_on:
+      mqtt-broker:
+        condition: service_healthy
+      amqp-broker:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    networks:
+      - rmf2-net
+    volumes:
+      - ./demos/warehouse/warehouse.lif.json:/app/data/warehouse.lif.json:ro
+      - ./demos/warehouse/agv_config.toml:/app/config.toml:ro
+    environment:
+      RMF2_VM__MQTT_BROKER: "tcp://mqtt-broker:${MQTT_PORT:-1883}"
+      RMF2_VM__AMQP__ENABLED: true
+      RMF2_VM__AMQP__URL: "amqp://guest:guest@amqp-broker/"
+      RMF2_VM__AMQP__EXCHANGE: rmf2
+      RMF2_VM__MASTER_MQTT_CLIENT_ID: "${RMF2_VM__MASTER_MQTT_CLIENT_ID:-rmf2-vda5050-master}"
+      RMF2_VM__HOST: "0.0.0.0"
+      RMF2_VM__PORT: "8000"
+      RMF2_VM__ROOT_PATH: "/vda5050_master"
+      RMF2_VM__MAP_PATH: "data/warehouse.lif.json"
+      RMF2_VM__DATABASE_URL: "postgresql+psycopg2://${POSTGRES_USER:-rmf2}:${POSTGRES_PASSWORD:-rmf2}@postgres/rmf2-vda5050-master-db"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.rmf2-vm.rule=PathPrefix(`/vda5050_master`)"
+      - "traefik.http.routers.rmf2-vm.entrypoints=web"
+      - "traefik.http.middlewares.rmf2-vm-strip.stripprefix.prefixes=/vda5050_master"
+      - "traefik.http.routers.rmf2-vm.middlewares=rmf2-vm-strip"
+      - "traefik.http.services.rmf2-vm.loadbalancer.server.port=8000"
+    restart: unless-stopped
+
+volumes:
+  postgres-data:

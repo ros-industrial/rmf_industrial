@@ -1,0 +1,45 @@
+include:
+  - ./infra/docker-compose.yml
+
+services:
+  rmf2-vda5050-master:
+    build:
+      context: ./services/rmf2_vda5050_master
+      dockerfile: Dockerfile
+    develop:
+      watch:
+        - action: sync
+          path: ./services/rmf2_vda5050_master/src
+          target: /app/src
+          ignore:
+            - __pycache__/
+        - action: rebuild
+          path: ./services/rmf2_vda5050_master/pyproject.toml
+        - action: rebuild
+          path: ./services/rmf2_vda5050_master/uv.lock
+    depends_on:
+      mqtt-broker:
+        condition: service_healthy
+    networks:
+      - rmf2-net
+    volumes:
+      - ./demos/warehouse/warehouse.lif.json:/app/data/warehouse.lif.json:ro
+      - ./demos/warehouse/agv_config.toml:/app/config.dev.toml:ro
+    environment:
+      MODE: dev
+      RMF2_VM__MQTT_BROKER: "tcp://mqtt-broker:${MQTT_PORT:-1883}"
+      RMF2_VM__AMQP__ENABLED: true
+      RMF2_VM__AMQP__URL: "amqp://guest:guest@amqp-broker/"
+      RMF2_VM__AMQP__EXCHANGE: rmf2
+      RMF2_VM__MASTER_MQTT_CLIENT_ID: "example-master"
+      RMF2_VM__HOST: "0.0.0.0"
+      RMF2_VM__PORT: "8000"
+      RMF2_VM__ROOT_PATH: "/vda5050_master"
+      RMF2_VM__MAP_PATH: "data/warehouse.lif.json"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.rmf2-vm.rule=PathPrefix(`/vda5050_master`)"
+      - "traefik.http.routers.rmf2-vm.entrypoints=web"
+      - "traefik.http.middlewares.rmf2-vm-strip.stripprefix.prefixes=/vda5050_master"
+      - "traefik.http.routers.rmf2-vm.middlewares=rmf2-vm-strip"
+      - "traefik.http.services.rmf2-vm.loadbalancer.server.port=8000"

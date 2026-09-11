@@ -1,0 +1,7 @@
+.python-version
+.venv
+.env*
+.ruff_cache
+.pytest_cache
+__pycache__
+*.db
