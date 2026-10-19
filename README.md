@@ -78,18 +78,31 @@ The hosted documentation is available at <https://dev.rmf-industrial.org/latest>
 Download the latest simulation
 
 ```sh
+# For RMF-I 0.2.0:
+curl -OL https://downloads.rmf-industrial.org/UE5Demos/RMF2_SIM_0.2.0.zip
+
+# For RMF-I Legacy:
 curl -OL https://downloads.rmf-industrial.org/UE5Demos/RMF2_SIM_20260611.zip
 ```
 
 Unzip the simulation
 
 ```sh
+# For RMF-I 0.2.0:
+unzip RMF2_SIM_0.2.0.zip
+cd ./RMF2_SIM_0.2.0
+
+# For RMF-I Legacy:
 unzip RMF2_SIM_20260611.zip
 cd ./RMF2_SIM_20260611
 ```
 
 Start the simulation
 ```sh
+# For RMF-I 0.2.0:
+./RMF2_SIM.sh
+
+# For RMF-I Legacy:
 ./Linux/RMF2_SIM.sh
 ```
 
@@ -98,6 +111,10 @@ You can press `Alt + Enter` to toggle between fullscreen and windowed mode.
 
 You can also start the simulation in a windowed mode with specific resolution
 ```sh
+# For RMF-I 0.2.0:
+./RMF2_SIM.sh -windowed -resx 1920 -resy 1080
+
+# For RMF-I Legacy:
 ./Linux/RMF2_SIM.sh -windowed -resx 1920 -resy 1080
 ```
 
