@@ -92,7 +92,7 @@ git switch --track -c throwaway/x2-demo origin/throwaway/x2-demo
 
 ```
 
-## Build the image
+### Build image
 
 ```bash
 cd ~/ros_industrial_ws/rmf_industrial
@@ -101,7 +101,7 @@ docker compose -f docker-compose.dev.yml up -d
 
 > **TIP:** First-time builds are slow.
 
-### Download & Launch the warehouse simulation
+### Download & Launch warehouse simulation
 
 Download and unpack the latest UE5 simulation build:
 
