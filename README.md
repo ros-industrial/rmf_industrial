@@ -146,7 +146,7 @@ You can also start the simulation in a windowed mode with specific resolution
 ```
 
 The simulation controls are similar to a typical game.
-Here are the basics
+Here are the basics:
 
 - Movement: Keyboard `W A S D` or Controller Left Stick
   - `W`, `S` move forward and backward
