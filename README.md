@@ -48,19 +48,33 @@ The hosted documentation is available at <https://dev.rmf-industrial.org/latest>
 
 Clone the `rmf_industrial` repo to your home folder (use `release-v0.2.0rc1` branch as of 20 Oct 2026).
 
-```bash
+```sh
 git clone git@github.com:Briancbn/rmf_industrial.git
 cd ~/rmf_industrial
 
 git switch --track -c release-v0.2.0rc1 origin/release-v0.2.0rc1
 ```
 
-### Build the image
+### Launch RMF-Industrial Core Services
 
-```bash
+Run the following commands to launch the RMF Industrial Core Services
+
+```sh
 cd ~/rmf_industrial
 docker compose -f docker-compose.dev.yml up -d
 ```
+
+This runs the essential communication broker for RMF Industrial Services
+- RabbitMQ Broker
+- Mosquitto MQTT Broker
+
+And the following RMF2 Services
+- VDA5050 Master
+- Robot Execution System
+  - Plan Server
+  - Plan Executor
+- Task Orchestrator
+- Task Scheduler
 
 ## Demonstrations
 
@@ -94,7 +108,7 @@ docker compose -f docker-compose.dev.yml up -d
 
 Download and unpack the latest UE5 simulation build in your home folder:
 
-```bash
+```sh
 curl -OL https://downloads.rmf-industrial.org/UE5Demos/RMF2_SIM_v0.2.0.zip
 
 unzip RMF2_SIM_0.2.0.zip
