@@ -20,7 +20,6 @@
 
 The RMF Industrial project provides RMF services for Manufacturing and Logistics.
 
-
 ## Summary
 
 The RMF Industrial project tries to adopt the new [Next Gen RMF interfaces](https://github.com/open-rmf/next_gen_prototype)
@@ -44,7 +43,6 @@ The hosted documentation is available at <https://dev.rmf-industrial.org/latest>
 | Task Orchestrator | <https://github.com/ros-industrial/rmf2_task_orchestrator> |
 | Task Scheduler | <https://github.com/ros-industrial/rmf2_scheduler> |
 | Web UI | <https://github.com/ros-industrial/rmf2-ui> |
-
 
 ## Setup Instructions
 
@@ -130,7 +128,6 @@ Here are the basics:
 
 Other controls
 - Tab `M` to show Map marker
-
 
 #### Usage
 
