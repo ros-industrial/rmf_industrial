@@ -57,39 +57,12 @@ cd ~/rmf_industrial
 git switch --track -c release-v0.2.0rc1 origin/release-v0.2.0rc1
 ```
 
-
 ### Build the image
 
 ```bash
 cd ~/rmf_industrial
 docker compose -f docker-compose.dev.yml up -d
 ```
-
-### Download & Launch warehouse simulation
-
-
-
-The simulation should start full screen matching your screen resolution.  
-You can press `Alt + Enter` to toggle between fullscreen and windowed mode.
-You can also start the simulation in a windowed mode with specific resolution
-
-```sh
-./RMF2_SIM.sh -windowed -resx 1920 -resy 1080
-```
-
-The simulation controls are similar to a typical game.
-Here are the basics
-
-- Movement: Keyboard `W A S D` or Controller Left Stick
-  - `W`, `S` move forward and backward
-  - `A`, `D` pan left and right
-  - `Q`, `E` move up and down
-
-  View: Mouse  or Controller Right Stick
-  - click on the screen and hold to move around
-
-Other controls
-- Tab `M` to show Map marker
 
 ## Demonstrations
 
@@ -135,6 +108,29 @@ Start the simulation
 cd ~/RMF2_SIM_v0.2.0
 ./Linux/RMF2_SIM.sh
 ```
+
+The simulation should start full screen matching your screen resolution.  
+You can press `Alt + Enter` to toggle between fullscreen and windowed mode.
+You can also start the simulation in a windowed mode with specific resolution
+
+```sh
+./Linux/RMF2_SIM.sh -windowed -resx 1920 -resy 1080
+```
+
+The simulation controls are similar to a typical game.
+Here are the basics
+
+- Movement: Keyboard `W A S D` or Controller Left Stick
+  - `W`, `S` move forward and backward
+  - `A`, `D` pan left and right
+  - `Q`, `E` move up and down
+
+  View: Mouse  or Controller Right Stick
+  - click on the screen and hold to move around
+
+Other controls
+- Tab `M` to show Map marker
+
 
 #### Usage
 
